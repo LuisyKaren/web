@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Página de Inicio de Sesión - Inventario Biblioteca UTN">
+    <title>Iniciar Sesión</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-host-cloud.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #6a1b9a);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .highlight-box h2 {
+            color: #6a1b9a;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-custom {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            width: 100%;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #4a148c;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .register-link a {
+            color: #6a1b9a;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            color: #4a148c;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Título de la página -->
+    <header>
+        Inventario UTN
+    </header>
+
+    <!-- Formulario de inicio de sesión -->
+    <div class="highlight-box">
+        <h2>Iniciar Sesión</h2>
+        <?php 
+        session_start();
+        if (isset($_SESSION['mensaje_error'])): ?>
+            <p class="error-message"><?php echo htmlspecialchars($_SESSION['mensaje_error']); ?></p>
+            <?php unset($_SESSION['mensaje_error']); ?>
+        <?php endif; ?>
+
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingresa tu correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-custom">Iniciar Sesión</button>
+        </form>
+        <div class="register-link">
+            <a href="registro.html">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Inventario UTN. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts necesarios -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

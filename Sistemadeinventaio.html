@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Página de Gestión de Inventario - Sistema de Inventario UTN">
+    <title>SistemadeInventario - Biblioteca UTN</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-host-cloud.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #6a1b9a);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: rgba(51, 51, 51, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+            border: none;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand h2 {
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #cccccc;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .banner h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 15px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: none;
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #4a148c;
+        }
+
+        /* Sección de gestión de inventario */
+        .inventory-management {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .inventory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .inventory-table th, .inventory-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .inventory-table th {
+            background-color: #6a1b9a;
+            color: white;
+        }
+
+        .inventory-table td {
+            background-color: #f9f9f9;
+        }
+
+        .inventory-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .inventory-actions button {
+            padding: 15px 30px;
+            border-radius: 25px;
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .inventory-actions button:hover {
+            background-color: #4a148c;
+        }
+
+        .add-item-form input, .add-item-form select {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .add-item-form button {
+            padding: 15px 30px;
+            border-radius: 25px;
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .add-item-form button:hover {
+            background-color: #4a148c;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><h2>Sistemade<em>Inventario</em></h2></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">Acerca de</a></li>
+                        <li class="nav-item"><a class="nav-link" href="services.html">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contactar</a></li>
+                    </ul>
+                    <div class="profile">
+                        <a href="perfil.html">
+                            <img src="assets/images/user-icon.png" alt="Usuario">
+                            Tu perfil
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Encabezado principal -->
+    <div class="banner">
+        <h1>Bienvenido al Sistema de Inventario UTN</h1>
+        <p>Gestiona artículos, movimientos y categorías de forma eficiente y sencilla.</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar artículo, categoría o movimiento...">
+            <button>Buscar</button>
+        </div>
+    </div>
+
+    <!-- Sección de gestión de inventario -->
+    <div class="inventory-management">
+        <!-- Formulario para agregar artículos -->
+        <h2>Agregar Nuevo Artículo</h2>
+        <form class="add-item-form">
+            <input type="text" placeholder="Nombre del Artículo" required>
+            <select required>
+                <option value="" disabled selected>Categoría</option>
+                <option value="libros">Libros</option>
+                <option value="revistas">Revistas</option>
+                <option value="material_didactico">Material Didáctico</option>
+            </select>
+            <input type="number" placeholder="Cantidad" required>
+            <textarea placeholder="Descripción del artículo" required></textarea>
+            <button type="submit">Agregar Artículo</button>
+        </form>
+
+        <!-- Tabla de artículos -->
+        <h2>Lista de Artículos</h2>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Artículo</th>
+                    <th>Categoría</th>
+                    <th>Existencias</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Libro de Matemáticas</td>
+                    <td>Libros</td>
+                    <td>20</td>
+                    <td>
+                        <button class="btn btn-warning">Modificar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Diccionario Español</td>
+                    <td>Libros</td>
+                    <td>15</td>
+                    <td>
+                        <button class="btn btn-warning">Modificar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Acciones de gestión -->
+        <div class="inventory-actions">
+            <button>Agregar Categoría</button>
+            <button>Registrar Movimiento</button>
+            <button>Buscar Existencias</button>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Sistema de Inventario UTN. Todos los derechos reservados. Diseñado por UTN</p>
+    </footer>
+
+    <!-- Scripts necesarios -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
